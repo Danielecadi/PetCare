@@ -16,7 +16,7 @@ class SpeciesSeeder extends Seeder
         $species = ['Cat', 'Dog', 'Bird', 'Rabbit', 'Fish', 'Reptile', 'Horse', 'Cow', 'Sheep', 'Goat', 'Pig', 'Chicken', 'Duck', 'Turkey', 'Guinea Pig', 'Hamster', 'Ferret', 'Chinchilla', 'Parrot', 'Turtle'];
 
         foreach ($species as $specie) {
-            Species::create(['name' => $specie]);
+            Species::firstOrCreate(['name' => $specie]);
         }
     }
 }

@@ -37,13 +37,17 @@ class BreedsSeeder extends Seeder
             'Turtle' => ['African Aquatic Sideneck', 'Asian Box', 'Eastern Box', 'Mississippi Map', 'Russian']
         ];
 
-        foreach ($breeds as $speciesName => $breeds) {
+        foreach ($breeds as $speciesName => $breedList) {
             $species = Species::where('name', $speciesName)->first();
 
-            foreach ($breeds as $breedName) {
-                Breed::create([
+            if (!$species) {
+                continue;
+            }
+
+            foreach ($breedList as $breedName) {
+                Breed::firstOrCreate([
                     'species_id' => $species->id,
-                    'name' => $breedName
+                    'name' => $breedName,
                 ]);
             }
         }
