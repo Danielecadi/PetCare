@@ -26,7 +26,7 @@ use App\Http\Controllers\GalleryController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return redirect()->route('clients');
 });
 
 Route::middleware([
