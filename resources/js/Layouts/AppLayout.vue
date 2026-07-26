@@ -4,7 +4,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import Banner from '@/Components/Banner.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
-import { UsersIcon, Squares2X2Icon, BoltIcon, CalendarDaysIcon, BeakerIcon } from '@heroicons/vue/24/outline'
+import { UsersIcon, Squares2X2Icon, CalendarDaysIcon, BeakerIcon } from '@heroicons/vue/24/outline'
 import { initFlowbite } from 'flowbite'
 
 onMounted(() => {
@@ -135,8 +135,14 @@ const logout = () => {
 						<li>
 							<NavLink :href="route('pets')" :active="route().current('pets')"
 								class="flex items-center p-2 text-base font-medium text-gray-500 hover:text-gray-100 rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group">
-								<BoltIcon
-									class="w-6 h-6transition duration-75 dark:text-gray-400 group-hover:text-gray-100 dark:group-hover:text-white" />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+									class="w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:text-gray-100 dark:group-hover:text-white">
+									<path d="M4.5 12.75a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z" />
+									<path d="M9 8.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z" />
+									<path d="M15 8.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z" />
+									<path d="M19.5 12.75a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z" />
+									<path d="M12 21c-3.31 0-6-1.79-6-4 0-1.66 1.34-3 3-3 .9 0 1.7.4 2.25 1.03A2.99 2.99 0 0 1 13.5 14c1.66 0 3 1.34 3 3 0 2.21-2.69 4-6 4Z" />
+								</svg>
 								<span class="ml-3">Animali</span>
 							</NavLink>
 						</li>
