@@ -16,15 +16,15 @@ const props = defineProps({
   <AppLayout title="Show Client">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Show Client: {{ client.name }}
+        Cliente: {{ client.name }}
       </h2>
     </template>
 
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 lg:col-span-3">
         <div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-          <img class="object-cover object-center w-full h-56"
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+          <img class="object-cover object-center w-50 h-50"
+            src="https://images.unsplash.com/vector-1776244476031-db2aa624a2a0?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="avatar">
 
           <div class="flex items-center px-6 py-3 bg-gray-900">
@@ -52,7 +52,7 @@ const props = defineProps({
           </div>
           <hr />
           <div class="px-6 py-4">
-            <span class="text-sm font-semibold text-gray-400">Notes</span>
+            <span class="text-sm font-semibold text-gray-400">Note</span>
             <p class="text-sm">{{ client.notes }}</p>
           </div>
         </div>

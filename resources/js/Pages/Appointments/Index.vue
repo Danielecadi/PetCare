@@ -53,7 +53,7 @@ const calendarOptions = ref({
 	},
 	customButtons: {
 		addEvent: {
-			text: 'Add Event',
+			text: 'Aggiungi Appuntamento',
 			click: () => {
 				openCreateModal();
 			}
@@ -95,7 +95,7 @@ onMounted(async () => {
 	<AppLayout title="Appointments">
 		<template #header>
 			<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-				Appointments
+				Appuntamenti
 			</h2>
 		</template>
 

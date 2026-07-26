@@ -129,7 +129,7 @@ const createPet = async () => {
 
 	// If there are any errors, don't submit the form
 	if (Object.keys(errors.value).length > 0) {
-		toast.error("Please correct the errors in the form.");
+		toast.error("Per favore, correggi gli errori nella pagina.");
 		isSubmitting.value = false;
 		return;
 	}

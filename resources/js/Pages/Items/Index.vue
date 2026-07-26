@@ -125,7 +125,7 @@ const editItem = (id) => {
     <AppLayout title="Items">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Inventory
+                Inventario
             </h2>
         </template>
 

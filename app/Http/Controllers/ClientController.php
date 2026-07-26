@@ -45,25 +45,25 @@ class ClientController extends Controller
     public function store(ClientStoreRequest $request): JsonResponse
     {
         $user = $this->clientService->storeClient($request->validated());
-        return response()->json(['message' => 'Client successfully added!'], 201);
+        return response()->json(['message' => 'Cliente aggiunto con successo'], 201);
     }
 
     public function update(ClientUpdateRequest $request, $id): JsonResponse
     {
         $client = $this->clientService->updateClient($request->validated(), $id);
-        return response()->json(['message' => 'Client updated successfully'], 201);
+        return response()->json(['message' => 'Cliente aggiornato con successo'], 201);
     }
 
     public function destroy($id): JsonResponse
     {
         $this->clientService->destroyClient($id);
-        return response()->json(['message' => 'Client deleted successfully'], 201);
+        return response()->json(['message' => 'Cliente cancellato con successo'], 201);
     }
 
     public function bulkDelete(ClientBulkDeleteRequest $request): JsonResponse
     {
         $this->clientService->bulkDeleteClients($request->validated()['selectedIds']);
-        return response()->json(['message' => 'Selected clients deleted successfully'], 201);
+        return response()->json(['message' => 'Clienti cancellati con successo'], 201);
     }
 
     public function fetchAllClients(ClientFetchAllRequest $request): JsonResponse

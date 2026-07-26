@@ -34,7 +34,7 @@ const fetchClients = async (page = 1) => {
 const handleSearch = async ({ search, keywords }) => {
     if (!keywords) {
         // Show a toast error
-        toast.warning('Enter a search term')
+        toast.warning('Inserisci un termine per la ricerca')
     } else {
         // If not empty, perform the search
         clients.value = await search('/clients/search');
@@ -67,17 +67,17 @@ const togglePetSelection = (ClientId) => {
 
 const deleteClient = (id) => {
     Swal.fire({
-        title: 'Delete Client?',
-        text: 'Are you sure you want to delete this client?',
+        title: 'Cancellare Cliente?',
+        text: 'Sei sicuro di voler cancellare questo cliente?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it',
-        cancelButtonText: 'No, keep it'
+        confirmButtonText: 'Sì, cancella',
+        cancelButtonText: 'No, mantienilo'
     }).then((result) => {
         if (result.isConfirmed) {
             axios.delete(`/clients/${id}`)
                 .then(response => {
-                    Swal.fire('Deleted!', response.data.message, 'success');
+                    Swal.fire('Cancellato!', response.data.message, 'success');
                     fetchClients();
                 })
                 .catch(error => {
@@ -90,17 +90,17 @@ const deleteClient = (id) => {
 const handleBulkDelete = () => {
     if (selectedClientIds.value.length > 0) {
         Swal.fire({
-            title: 'Delete Selected Clients?',
-            text: `You have selected ${selectedClientIds.value.length} client(s). Do you want to continue?`,
+            title: 'Cancellare Clienti Selezionati?',
+            text: `Hai selezionato ${selectedClientIds.value.length} clienti. Vuoi continuare?`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete them',
-            cancelButtonText: 'No, keep them'
+            confirmButtonText: 'Sì, cancella',
+            cancelButtonText: 'No, mantienili'
         }).then((result) => {
             if (result.isConfirmed) {
                 axios.delete('/clients/bulk-delete/selected', { data: { selectedIds: selectedClientIds.value } })
                     .then((response) => {
-                        Swal.fire('Deleted!', response.data.message, 'success')
+                        Swal.fire('Cancellati!', response.data.message, 'success')
                         selectedClientIds.value = []
                         anyCheckboxSelected.value = false
                         fetchClients()
@@ -122,7 +122,7 @@ const handleBulkDelete = () => {
     <AppLayout title="Clients">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Clients
+                Clienti
             </h2>
         </template>
 
@@ -134,7 +134,7 @@ const handleBulkDelete = () => {
                             class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                             <div class="w-full md:w-1/2">
                                 <form class="flex items-center">
-                                    <label for="simple-search" class="sr-only">Search</label>
+                                    <label for="simple-search" class="sr-only">Cerca</label>
                                     <div class="relative w-full">
                                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -158,7 +158,7 @@ const handleBulkDelete = () => {
 
                                 <Link :href="route('clients.create')"
                                     class="flex items-center justify-center text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800">
-                                <PlusSmallIcon class="w-5 h-5 -ml-1 mr-2" /> New Client
+                                <PlusSmallIcon class="w-5 h-5 -ml-1 mr-2" /> Nuovo Cliente
                                 </Link>
                             </div>
                         </div>
@@ -186,12 +186,12 @@ const handleBulkDelete = () => {
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-4 py-3 w-[20%]">Name</th>
+                                    <th scope="col" class="px-4 py-3 w-[20%]">Nome</th>
                                     <th scope="col" class="px-4 py-3 w-[20%]">Email</th>
-                                    <th scope="col" class="px-4 py-3 w-[20%]">Phone Number</th>
-                                    <th scope="col" class="px-4 py-3 w-[40%]">Added</th>
+                                    <th scope="col" class="px-4 py-3 w-[20%]">Numero di telefono</th>
+                                    <th scope="col" class="px-4 py-3 w-[40%]">Aggiunto il</th>
                                     <th scope="col" class="px-4 py-3">
-                                        <span class="sr-only">Actions</span>
+                                        <span class="sr-only">Azioni</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -207,10 +207,10 @@ const handleBulkDelete = () => {
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                                                         </svg>
                                                     </div>
-                                                    <h1 class="mt-3 text-lg text-gray-400 dark:text-white">No clients found</h1>
+                                                    <h1 class="mt-3 text-lg text-gray-400 dark:text-white">Nessun cliente trovato</h1>
                                                     <div class="flex flex-col sm:flex-row items-center mt-4 sm:mx-auto gap-y-3 sm:gap-x-3">
                                                         <button @click="handleClear" class="px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
-                                                            Clear Search
+                                                            Pulisci Ricerca
                                                         </button>
 
                                                         <button class="flex items-center justify-center px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-indigo-700 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-indigo-800 dark:hover:bg-indigo-800 dark:bg-indigo-700">
@@ -218,7 +218,7 @@ const handleBulkDelete = () => {
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                             </svg>
 
-                                                            <span>Add Client</span>
+                                                            <span>Aggiungi Cliente</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -245,18 +245,18 @@ const handleBulkDelete = () => {
                                         <Link :href="route('clients.show', { slug: client.slug })"
                                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100">
                                         <EyeIcon class="w-5 h-5 mr-1" />
-                                        <span class="sr-only">View</span>
+                                        <span class="sr-only">Visualizza</span>
                                         </Link>
                                         <Link :href="route('clients.edit', { slug: client.slug })"
                                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100">
                                         <PencilSquareIcon class="w-5 h-5 text-indigo-500 hover:text-indigo-800 mr-1" />
-                                        <span class="sr-only">Edit</span>
+                                        <span class="sr-only">Modifica</span>
                                         </Link>
                                         <button @click="deleteClient(client.id)"
                                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                                             type="button">
                                             <TrashIcon class="w-5 h-5 text-red-500 hover:text-red-800" />
-                                            <span class="sr-only">Delete</span>
+                                            <span class="sr-only">Cancella</span>
                                         </button>
                                     </td>
                                 </tr>

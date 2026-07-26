@@ -88,7 +88,7 @@ const deletePet = (id) => {
 			<div class="col-span-12 lg:col-span-3">
 				<div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
 					<img v-if="pet.photo" class="object-cover object-center w-full h-56" :src="pet.photo" alt="avatar">
-					<img v-else src="/storage/images/pets/no_photo.png" class="object-cover object-center w-full h-56">
+					<img v-else src="https://images.unsplash.com/vector-1762861052831-5806f64eeef9?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="object-cover object-center w-full h-56">
 
 					<div class="flex items-center px-6 py-3 bg-indigo-700">
 						<BoltIcon class="w-6 h-6 text-white" />

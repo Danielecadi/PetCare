@@ -57,7 +57,7 @@ const storeHistory = async () => {
 	validateForm(historiesForm.value);
 
 	if (Object.keys(errors.value).length > 0) {
-		toast.error("Please correct the errors in the form.");
+		toast.error("Per favore, correggi gli errori nella pagina.");
 		isSubmitting.value = false;
 		return;
 	}

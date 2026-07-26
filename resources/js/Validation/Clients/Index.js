@@ -14,19 +14,19 @@ export const validateForm = (form) => {
 
     // Validate name (trimming whitespace)
     if (!form.name || !form.name.trim()) {
-        errors.value.name = 'This field is required';
+        errors.value.name = 'Questo campo è obbligatorio'; // 
     }
 
     // Validate email (trimming whitespace)
     if (!form.email || !form.email.trim()) {
-        errors.value.email = 'This field is required';
+        errors.value.email = 'Questo campo è obbligatorio'; 
     } else if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-        errors.value.email = 'This field must be a valid email';
+        errors.value.email = 'Per favore, inserisci un indirizzo email valido'; // Italian for "Please enter a valid email address"
     }
 
     // Validate phone_number (trimming whitespace)
     if (!form.phone_number || !form.phone_number.trim()) {
-        errors.value.phone_number = 'This field is required';
+        errors.value.phone_number = 'Questo campo è obbligatorio'; // Italian for "This field is required"
     } // Additional validation can be added for phone_number if needed
 
     // Validate address (trimming whitespace if it's a string)

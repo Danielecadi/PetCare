@@ -47,12 +47,12 @@ const logout = () => {
 									d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
 									clip-rule="evenodd"></path>
 							</svg>
-							<span class="sr-only">Toggle sidebar</span>
+							<span class="sr-only">Mostra/nascondi barra laterale</span>
 						</button>
-						<a href="/dashboard" class="flex items-center justify-between mr-4">
+						<a href="/clients" class="flex items-center justify-between mr-4">
 							<img src="/img/logo.png" class="mr-3" alt="Flowbite Logo" />
 							<span
-								class="self-center text-2xl text-indigo-900 font-semibold whitespace-nowrap dark:text-white">Pet Care</span>
+								class="self-center text-2xl text-indigo-900 font-semibold whitespace-nowrap dark:text-white">ProjectVet</span>
 						</a>
 					</div>
 					<div class="flex items-center lg:order-2">
@@ -60,7 +60,7 @@ const logout = () => {
 						<button type="button"
 							class="flex mx-3 p-3 text-gray-100 bg-indigo-800 rounded-full md:mr-0 focus:ring-2 focus:ring-indigo-700 dark:focus:ring-gray-600 w-[40px] h-[40px] items-center justify-evenly"
 							id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
-							<span class="sr-only">Open user menu</span>
+							<span class="sr-only">Apri menu utente</span>
 							{{ $page.props.auth.user.name.charAt(0) }}
 						</button>
 						<!-- Dropdown menu -->
@@ -70,16 +70,18 @@ const logout = () => {
 								<span class="block text-sm font-semibold text-gray-900 dark:text-white">{{ $page.props.auth.user.name }}</span>
 								<span class="block text-sm text-gray-900 truncate dark:text-white">{{ $page.props.auth.user.email }}</span>
 							</div>
+							<!-- dropdown profilo disabilitato
 							<ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
 								<li>
-										<Link :href="route('profile.show')" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Profile</Link>
+										<Link :href="route('profile.show')" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Profilo</Link>
 								</li>
 							</ul>
+						-->
 							<ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
 								<li>
 									<form @submit.prevent="logout">
 										<DropdownLink as="button">
-											Log Out
+											Esci
 										</DropdownLink>
 									</form>
 								</li>
@@ -96,7 +98,7 @@ const logout = () => {
 				aria-label="Sidenav" id="drawer-navigation">
 				<div class="overflow-y-auto py-5 px-3 h-full bg-gray-900 dark:bg-gray-800">
 					<form action="#" method="GET" class="md:hidden mb-2">
-						<label for="sidebar-search" class="sr-only">Search</label>
+						<label for="sidebar-search" class="sr-only">Cerca</label>
 						<div class="relative">
 							<div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
 								<svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
@@ -108,10 +110,11 @@ const logout = () => {
 							</div>
 							<input type="text" name="search" id="sidebar-search"
 								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-								placeholder="Search" />
+								placeholder="Cerca" />
 						</div>
 					</form>
 					<ul class="space-y-2">
+						<!-- dashboard disabilitata
 						<li>
 							<NavLink :href="route('dashboard')" :active="route().current('dashboard')"
 								class="flex items-center p-2 text-base font-medium text-gray-500 hover:text-gray-100 rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group">
@@ -120,12 +123,13 @@ const logout = () => {
 								<span class="ml-3">Dashboard</span>
 							</NavLink>
 						</li>
+						-->
 						<li>
 							<NavLink :href="route('clients')" :active="route().current('clients')"
 								class="flex items-center p-2 text-base font-medium text-gray-500 hover:text-gray-100 rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group">
 								<UsersIcon
 									class="w-6 h-6  transition duration-75 dark:text-gray-400 group-hover:text-gray-100 dark:group-hover:text-white" />
-								<span class="ml-3">Clients</span>
+								<span class="ml-3">Clienti</span>
 							</NavLink>
 						</li>
 						<li>
@@ -133,7 +137,7 @@ const logout = () => {
 								class="flex items-center p-2 text-base font-medium text-gray-500 hover:text-gray-100 rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group">
 								<BoltIcon
 									class="w-6 h-6transition duration-75 dark:text-gray-400 group-hover:text-gray-100 dark:group-hover:text-white" />
-								<span class="ml-3">Pets</span>
+								<span class="ml-3">Animali</span>
 							</NavLink>
 						</li>
 						<li>
@@ -141,17 +145,19 @@ const logout = () => {
 								class="flex items-center p-2 text-base font-medium text-gray-500 hover:text-gray-100 rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group">
 								<CalendarDaysIcon
 									class="w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:text-gray-100 dark:group-hover:text-white" />
-								<span class="ml-3">Appointments</span>
+								<span class="ml-3">Appuntamenti</span>
 							</NavLink>
 						</li>
+						<!-- tab inventario disabilitata 
 						<li>
 							<NavLink :href="route('items')" :active="route().current('items')"
 								class="flex items-center p-2 text-base font-medium text-gray-500 hover:text-gray-100 rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group">
 								<BeakerIcon
 									class="w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:text-gray-100 dark:group-hover:text-white" />
-								<span class="ml-3">Inventory</span>
+								<span class="ml-3">Inventario</span>
 							</NavLink>
 						</li>
+					-->
 					</ul>
 				</div>
 

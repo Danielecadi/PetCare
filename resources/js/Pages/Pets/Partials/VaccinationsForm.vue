@@ -52,7 +52,7 @@ const storeVaccination = async () => {
 	validateForm(vaccinationsForm.value);
 
 	if (Object.keys(errors.value).length > 0) {
-		toast.error("Please correct the errors in the form.");
+		toast.error("Per favore, correggi gli errori nella pagina.");
 		isSubmitting.value = false;
 		return;
 	}
@@ -110,7 +110,7 @@ const fetchVaccinations = async () => {
 	<div class="max-w-full bg-white rounded-md mt-2">
 
 		<div class="text-lg font-semibold leading-6 text-gray-900 border-b p-6 flex justify-between items-center">
-			Vaccinations
+			Vaccinazioni
 			<button @click.stop.prevent="addVaccination"
 				class="bg-indigo-500 hover:bg-indigo-700 text-white p-2 rounded-md">
 				<PlusIcon class="h-6 w-6" />
@@ -121,9 +121,9 @@ const fetchVaccinations = async () => {
 
 			<div v-for="(vaccination, index) in vaccinationsForm" :key="index" class="grid grid-cols-12 gap-5 mb-5 p-5">
 				<div class=" col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="vaccine_name" class="mb-2 block text-sm font-medium text-gray-500">Vaccine Name</label>
+					<label for="vaccine_name" class="mb-2 block text-sm font-medium text-gray-500">Nome Vaccino</label>
 					<input v-model="vaccination.vaccine_name" name="vaccine_name" id="vaccine_name"
-						placeholder="Vaccine Name"
+						placeholder="Nome Vaccino"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`vaccinations[${index}].vaccine_name`] }">
 					<span class="text-red-500 text-xs">{{ errors[`vaccinations[${index}].vaccine_name`] }}</span>
@@ -158,7 +158,7 @@ const fetchVaccinations = async () => {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-3">
-					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Notes</label>
+					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Note</label>
 					<textarea v-model="vaccination.notes" name="notes" id="notes" placeholder="Notes" rows="5"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`vaccinations[${index}].notes`] }"></textarea>
@@ -177,7 +177,7 @@ const fetchVaccinations = async () => {
 			<div class="col-span-12 m-5 pb-5">
 				<button type="submit" :disabled="isSubmitting"
 					class="w-full rounded-lg border border-indigo-700 bg-indigo-700 px-8 py-4 text-center text-lg font-medium text-white shadow-sm transition-all hover:border-indigo-800 hover:bg-indigo-800 disabled:cursor-not-allowed disabled:border-indigo-300 disabled:bg-indigo-300">
-					Save Vaccinations
+					Salva Vaccinazioni
 				</button>
 			</div>
 		</form>
