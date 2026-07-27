@@ -15,7 +15,7 @@ import SurgicalHistoryTable from '@/Pages/Pets/Partials/Tables/SurgicalHistory.v
 import GalleryTable from '@/Pages/Pets/Partials/Tables/Gallery.vue'
 
 const { pet } = usePage().props
-const tabs = ref(['Vaccinations', 'Medical History', 'Medications', 'Surgical History', 'Gallery'])
+const tabs = ref(['Vaccinazioni', 'Storia clinica', 'Farmaci', 'Interventi chirurgici', /* 'Galleria' */])
 const toast = useToast();
 const data = ref([])
 
@@ -38,23 +38,23 @@ const fetchVaccinations = async () => {
 
 const deletePet = (id) => {
 	Swal.fire({
-		title: 'Delete Pet?',
-		text: 'Are you sure you want to delete this pet?',
+		title: 'Eliminare l\'animale?',
+		text: 'Vuoi davvero eliminare questo animale?',
 		icon: 'warning',
 		showCancelButton: true,
-		confirmButtonText: 'Yes, delete it',
-		cancelButtonText: 'No, keep it'
+		confirmButtonText: 'Sì, elimina',
+		cancelButtonText: 'No, mantieni'
 	}).then((result) => {
 		if (result.isConfirmed) {
 			axios.delete(`/pets/${id}`)
 				.then(response => {
-					Swal.fire('Deleted!', response.data.message, 'success')
+					Swal.fire('Eliminato!', response.data.message, 'success')
 						.then(() => {
 							router.visit(route('pets'), { method: 'get' })
 						});
 				})
 				.catch(error => {
-					Swal.fire('Error!', error.response.data.message, 'error');
+					Swal.fire('Errore!', error.response.data.message, 'error');
 				});
 		}
 	});
@@ -63,11 +63,11 @@ const deletePet = (id) => {
 </script>
 
 <template>
-	<AppLayout title="View Pet">
+	<AppLayout title="Dettaglio animale">
 		<template #header>
 			<div class="flex justify-between">
 				<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-					Show Pet: {{ pet.name }}
+					Animale: {{ pet.name }}
 				</h2>
 				<div class="flex justify-evenly">
 					<Link :href="route('pets.edit', { slug: pet.slug })" class="text-indigo-700 hover:text-indigo-500">
@@ -78,7 +78,7 @@ const deletePet = (id) => {
 						class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
 						type="button">
 						<TrashIcon class="w-8 h-8 text-red-500 hover:text-red-800" />
-						<span class="sr-only">Delete</span>
+						<span class="sr-only">Elimina</span>
 					</button>
 				</div>
 			</div>

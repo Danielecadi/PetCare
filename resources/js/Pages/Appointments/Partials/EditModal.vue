@@ -62,7 +62,7 @@ const submitEditForm = async () => {
 	validateForm(editForm);
 
 	if (Object.keys(errors.value).length > 0) {
-		toast.error("Please correct the errors in the form.");
+		toast.error("Correggi gli errori nel modulo.");
 		return;
 	}
 
@@ -78,14 +78,14 @@ const submitEditForm = async () => {
 	props.fetchAllAppointments();
 	closeEditModal()
 	resetForm()
-	toast.success("Appointment created successfully!");
+	toast.success("Appuntamento aggiornato con successo!");
 };
 
 const deleteEvent = async (id) => {
     await axios.delete(`/appointments/${id}`);
     props.fetchAllAppointments();
     closeEditModal();
-    toast.success("Appointment deleted successfully!");
+    toast.success("Appuntamento eliminato con successo!");
 };
 
 const setClientId = () => {
@@ -126,7 +126,7 @@ onMounted(async () => {
             <DialogPanel
               class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
               <DialogTitle as="h3" class="flex justify-between items-center text-lg font-medium leading-6 text-gray-900">
-                <div>Edit Event</div>
+                <div>Modifica appuntamento</div>
                 <button @click="deleteEvent(editForm.id)"
                   class="inline-flex items-center text-red-700 hover:text-red-900 font-medium rounded-lg text-sm py-2.5 text-center">
                   <TrashIcon class="w-6 h-6" />
@@ -135,22 +135,22 @@ onMounted(async () => {
               <form @submit.prevent="submitEditForm" class="py-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                   <div class="col-span-2">
-                    <label for="title" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Title</label>
+                    <label for="title" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Titolo</label>
                     <input v-model="editForm.title" type="text" name="title" id="title"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-                      :class="errors.title ? 'border-red-500' : 'border-gray-300'" placeholder="Type event title">
+                      :class="errors.title ? 'border-red-500' : 'border-gray-300'" placeholder="Tipo di appuntamento">
                     <div v-if="errors.title" class="text-sm text-red-500 mt-1">
                       {{ errors.title }}
                     </div>
                   </div>
                   <div class="col-span-2">
                     <label for="client"
-                      class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Client</label>
-                    <VueMultiselect v-model="selectedEditClient" :options="props.matchingClients" :multiple="false"
-                      :clear-on-select="true" placeholder="Type to search" label="name" track-by="id"
+                      class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Cliente</label>
+                    <VueMultiselect v-model="selectedEditClient" :options="props.matchingClients" :multiple="false" select-label="Premi Invio per selezionare"
+                      :clear-on-select="true" placeholder="Cerca un cliente" label="name" track-by="id"
                       @search-change="props.searchClients" @input="setClientId" :class="{ 'error': errors.client_id }">
                       <template #noUser>
-                        Oops! No users found. Try a different search query.
+                        Nessun cliente trovato. Prova con un nome diverso.
                       </template>
                     </VueMultiselect>
                     <div v-if="errors.client_id" class="text-sm text-red-500 mt-1">
@@ -158,8 +158,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
-                    <label for="start_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Start
-                      Date</label>
+                    <label for="start_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Data e ora di inizio</label>
                     <input v-model="editForm.start_time" type="datetime-local" name="start_time" id="start_time"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                       :class="errors.start_time ? 'border-red-500' : 'border-gray-300'">
@@ -168,8 +167,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
-                    <label for="end_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">End
-                      Date</label>
+                    <label for="end_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Data e ora di fine</label>
                     <input v-model="editForm.end_time" type="datetime-local" name="end_time" id="end_time"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                       :class="errors.end_time ? 'border-red-500' : 'border-gray-300'">
@@ -179,10 +177,10 @@ onMounted(async () => {
                   </div>
                   <div class="col-span-2">
                     <label for="description"
-                      class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Description</label>
+                      class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Descrizione</label>
                     <textarea v-model="editForm.description" id="description" rows="4"
                       class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-                      placeholder="Write event description here"></textarea>
+                      placeholder="Scrivi qui la descrizione dell'appuntamento"></textarea>
                   </div>
                 </div>
                 <div class="flex justify-between">
@@ -194,7 +192,7 @@ onMounted(async () => {
                         d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                         clip-rule="evenodd"></path>
                     </svg>
-                    Update Event
+                    Aggiorna appuntamento
                   </button>
                 </div>
               </form>

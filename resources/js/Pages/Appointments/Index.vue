@@ -4,6 +4,7 @@ import { onMounted, ref, watch } from 'vue'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import itLocale from '@fullcalendar/core/locales/it'
 import { validateForm, errors, watchFields } from '@/Validation/Appointments/Index'
 import CreateModal from './Partials/CreateModal.vue'
 import EditModal from './Partials/EditModal.vue'
@@ -39,6 +40,7 @@ const closeEditModal = () => {
 
 const calendarOptions = ref({
 	plugins: [dayGridPlugin, interactionPlugin],
+	locale: itLocale,
 	initialView: 'dayGridMonth',
 	headerToolbar: {
 		left: 'prev,next today addEvent',
@@ -49,7 +51,7 @@ const calendarOptions = ref({
 		hour: 'numeric',
 		minute: '2-digit',
 		omitZeroMinute: false,
-		meridiem: true,
+		meridiem: false,
 	},
 	customButtons: {
 		addEvent: {
@@ -92,7 +94,7 @@ onMounted(async () => {
 </script>
 
 <template>
-	<AppLayout title="Appointments">
+    <AppLayout title="Appuntamenti">
 		<template #header>
 			<h2 class="font-semibold text-xl text-gray-800 leading-tight">
 				Appuntamenti

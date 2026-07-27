@@ -13,16 +13,16 @@ const props = defineProps({
 <template>
   <div class="px-4 py-5 sm:p-6">
     <template v-if="pet.medical_history.length === 0">
-      <p class="text-center text-gray-500 py-4">No medical history found.</p>
+      <p class="text-center text-gray-500 py-4">Nessuna storia clinica trovata.</p>
     </template>
     <template v-else>
       <table class="min-w-full divide-y divide-gray-300">
         <thead>
           <tr>
-            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Condition</th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Diagnosis</th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Treatment</th>
-            <th scope="col" class="py-3.5 text-right text-sm font-semibold text-gray-900">Notes</th>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Condizione</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Diagnosi</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Trattamento</th>
+            <th scope="col" class="py-3.5 text-right text-sm font-semibold text-gray-900">Note</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">

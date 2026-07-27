@@ -43,7 +43,7 @@ const deleteVaccination = async (index) => {
 	}
 
 	await axios.delete(`/pets/${pet.id}/vaccinations/${vaccinationId}`);
-	toast.success('Vaccination successfully deleted!');
+	toast.success('Vaccinazione eliminata con successo!');
 };
 
 const storeVaccination = async () => {
@@ -130,7 +130,7 @@ const fetchVaccinations = async () => {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="administered_at" class="mb-2 block text-sm font-medium text-gray-500">Date</label>
+					<label for="administered_at" class="mb-2 block text-sm font-medium text-gray-500">Data di somministrazione</label>
 					<input type="date" v-model="vaccination.administered_at"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`vaccinations[${index}].administered_at`] }">
@@ -138,9 +138,9 @@ const fetchVaccinations = async () => {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="batch_number" class="mb-2 block text-sm font-medium text-gray-500">Batch Number</label>
+					<label for="batch_number" class="mb-2 block text-sm font-medium text-gray-500">Numero di lotto</label>
 					<input v-model="vaccination.batch_number" name="batch_number" id="batch_number"
-						placeholder="Batch Number"
+						placeholder="Numero di lotto"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`vaccinations[${index}].batch_number`] }">
 					<span class="text-red-500 text-xs">{{ errors[`vaccinations[${index}].batch_number`] }}</span>
@@ -148,9 +148,9 @@ const fetchVaccinations = async () => {
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
 					<label for="administering_veterinarian"
-						class="mb-2 block text-sm font-medium text-gray-500">Administering Veterinarian</label>
+						class="mb-2 block text-sm font-medium text-gray-500">Veterinario somministratore</label>
 					<input v-model="vaccination.administering_veterinarian" name="administering_veterinarian"
-						id="administering_veterinarian" placeholder="Administering Veterinarian"
+						id="administering_veterinarian" placeholder="Veterinario somministratore"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`vaccinations[${index}].administering_veterinarian`] }">
 					<span
@@ -159,7 +159,7 @@ const fetchVaccinations = async () => {
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-3">
 					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Note</label>
-					<textarea v-model="vaccination.notes" name="notes" id="notes" placeholder="Notes" rows="5"
+					<textarea v-model="vaccination.notes" name="notes" id="notes" placeholder="Note" rows="5"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`vaccinations[${index}].notes`] }"></textarea>
 					<span class="text-red-500 text-xs">{{ errors[`vaccinations[${index}].notes`] }}</span>

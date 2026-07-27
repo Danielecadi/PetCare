@@ -14,26 +14,26 @@ export const validateForm = (form) => {
 
     // Validate name (trimming whitespace)
     if (!form.name || !form.name.trim()) {
-        errors.value.name = 'Questo campo è obbligatorio'; // 
+        errors.value.name = 'Questo campo è obbligatorio';
     }
 
     // Validate email (trimming whitespace)
     if (!form.email || !form.email.trim()) {
-        errors.value.email = 'Questo campo è obbligatorio'; 
+        errors.value.email = 'Questo campo è obbligatorio';
     } else if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-        errors.value.email = 'Per favore, inserisci un indirizzo email valido'; // Italian for "Please enter a valid email address"
+        errors.value.email = 'Inserisci un indirizzo email valido';
     }
 
     // Validate phone_number (trimming whitespace)
     if (!form.phone_number || !form.phone_number.trim()) {
-        errors.value.phone_number = 'Questo campo è obbligatorio'; // Italian for "This field is required"
+        errors.value.phone_number = 'Questo campo è obbligatorio';
     } // Additional validation can be added for phone_number if needed
 
     // Validate address (trimming whitespace if it's a string)
     if (form.address && typeof form.address === 'string' && !form.address.trim()) {
-        errors.value.address = 'This field cannot be only spaces';
+        errors.value.address = 'Questo campo non può contenere solo spazi';
     } else if (form.address && typeof form.address !== 'string') {
-        errors.value.address = 'This field must be a string';
+        errors.value.address = 'Questo campo deve contenere del testo';
     }
 };
 

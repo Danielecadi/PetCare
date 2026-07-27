@@ -67,12 +67,12 @@ const togglePetSelection = (PetId) => {
 
 const deletePet = (id) => {
     Swal.fire({
-        title: 'Delete Pet?',
-        text: 'Are you sure you want to delete this pet?',
+        title: 'Eliminare l\'animale?',
+        text: 'Vuoi davvero eliminare questo animale?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it',
-        cancelButtonText: 'No, keep it'
+        confirmButtonText: 'Sì, elimina',
+        cancelButtonText: 'No, mantieni'
     }).then((result) => {
         if (result.isConfirmed) {
             axios.delete(`/pets/${id}`)
@@ -90,12 +90,12 @@ const deletePet = (id) => {
 const handleBulkDelete = () => {
     if (selectedPetIds.value.length > 0) {
         Swal.fire({
-            title: 'Delete Selected Pets?',
-            text: `You have selected ${selectedPetIds.value.length} pet(s). Do you want to continue?`,
+            title: 'Eliminare gli animali selezionati?',
+            text: `Hai selezionato ${selectedPetIds.value.length} animali. Vuoi continuare?`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete them',
-            cancelButtonText: 'No, keep them'
+            confirmButtonText: 'Sì, elimina',
+            cancelButtonText: 'No, mantieni'
         }).then((result) => {
             if (result.isConfirmed) {
                 axios.delete('/pets/bulk-delete/selected', { data: { selectedIds: selectedPetIds.value } })
@@ -119,10 +119,10 @@ const handleBulkDelete = () => {
 </script>
 
 <template>
-    <AppLayout title="Pets">
+    <AppLayout title="Animali">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Pets
+                Animali
             </h2>
         </template>
 
@@ -134,7 +134,7 @@ const handleBulkDelete = () => {
                             class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                             <div class="w-full md:w-1/2">
                                 <form class="flex items-center">
-                                    <label for="simple-search" class="sr-only">Search</label>
+                                    <label for="simple-search" class="sr-only">Cerca</label>
                                     <div class="relative w-full">
                                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -158,7 +158,7 @@ const handleBulkDelete = () => {
 
                                 <Link :href="route('pets.create')"
                                     class="flex items-center justify-center text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800">
-                                <PlusSmallIcon class="w-5 h-5 -ml-1 mr-2" /> New Pet
+                                <PlusSmallIcon class="w-5 h-5 -ml-1 mr-2" /> Nuovo Animale
                                 </Link>
                             </div>
                         </div>
@@ -174,7 +174,7 @@ const handleBulkDelete = () => {
                                     fill="currentFill" />
 
                             </svg>
-                            <span class="sr-only">Loading...</span>
+                            <span class="sr-only">Caricamento...</span>
                         </div>
                         <table v-else class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="hidden md:table-header-group text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -186,12 +186,12 @@ const handleBulkDelete = () => {
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-4 py-3 w-[20%]">Name</th>
-                                    <th scope="col" class="px-4 py-3 w-[20%]">Species</th>
-                                    <th scope="col" class="px-4 py-3 w-[20%]">Breed</th>
-                                    <th scope="col" class="px-4 py-3 w-[40%]">Added</th>
+                                    <th scope="col" class="px-4 py-3 w-[20%]">Nome</th>
+                                    <th scope="col" class="px-4 py-3 w-[20%]">Specie</th>
+                                    <th scope="col" class="px-4 py-3 w-[20%]">Razza</th>
+                                    <th scope="col" class="px-4 py-3 w-[40%]">Aggiunto il</th>
                                     <th scope="col" class="px-4 py-3">
-                                        <span class="sr-only">Actions</span>
+                                        <span class="sr-only">Azioni</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -207,10 +207,10 @@ const handleBulkDelete = () => {
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                                                         </svg>
                                                     </div>
-                                                    <h1 class="mt-3 text-lg text-gray-400 dark:text-white">No Pets found</h1>
+                                                    <h1 class="mt-3 text-lg text-gray-400 dark:text-white">Nessun animale trovato</h1>
                                                     <div class="flex flex-col sm:flex-row items-center mt-4 sm:mx-auto gap-y-3 sm:gap-x-3">
                                                         <button @click="handleClear" class="px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
-                                                            Clear Search
+                                                            Pulisci Ricerca
                                                         </button>
 
                                                         <button class="flex items-center justify-center px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-indigo-700 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-indigo-800 dark:hover:bg-indigo-800 dark:bg-indigo-700">
@@ -218,7 +218,7 @@ const handleBulkDelete = () => {
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                             </svg>
 
-                                                            <span>Add Pet</span>
+                                                            <span>Aggiungi animale</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -245,18 +245,18 @@ const handleBulkDelete = () => {
                                         <Link :href="route('pets.show', { slug: pet.slug })"
                                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100">
                                         <EyeIcon class="w-5 h-5 mr-1" />
-                                        <span class="sr-only">View</span>
+                                        <span class="sr-only">Visualizza</span>
                                         </Link>
                                         <Link :href="route('pets.edit', { slug: pet.slug })"
                                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100">
                                         <PencilSquareIcon class="w-5 h-5 text-indigo-500 hover:text-indigo-800 mr-1" />
-                                        <span class="sr-only">Edit</span>
+                                        <span class="sr-only">Modifica</span>
                                         </Link>
                                         <button @click="deletePet(pet.id)"
                                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                                             type="button">
                                             <TrashIcon class="w-5 h-5 text-red-500 hover:text-red-800" />
-                                            <span class="sr-only">Delete</span>
+                                            <span class="sr-only">Elimina</span>
                                         </button>
                                     </td>
                                 </tr>

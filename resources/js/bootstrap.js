@@ -15,14 +15,14 @@ const toast = useToast();
 axios.interceptors.response.use(
   response => response,
   error => {
-    let errorMessage = 'An error occurred'
+    let errorMessage = 'Si è verificato un errore'
     if (error.response) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       errorMessage = error.response.data.message;
     } else if (error.request) {
       // The request was made but no response was received
-      errorMessage = 'No response received from server';
+      errorMessage = 'Nessuna risposta ricevuta dal server';
     }
     toast.error(errorMessage)
     return Promise.reject(error)

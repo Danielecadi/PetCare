@@ -41,12 +41,12 @@ const deleteSurgery = async (index) => {
 		// Send the id to the backend
 		await axios.delete(`/pets/${pet.id}/surgeries/${surgeryId}`);
 
-		toast.success('Surgical History successfully deleted!');
+		toast.success('Intervento chirurgico eliminato con successo!');
 	} else {
 		const surgery = surgeriesForm.value[index];
 		await axios.delete(`/pets/${pet.id}/surgeries/${surgery.id}`);
 		surgeriesForm.value.splice(index, 1);
-		toast.success('Surgical History successfully deleted!');
+		toast.success('Intervento chirurgico eliminato con successo!');
 	}
 }
 
@@ -114,7 +114,7 @@ const fetchSurgeries = async () => {
 	<div class="max-w-full bg-white rounded-md mt-2">
 
 		<div class="text-lg font-semibold leading-6 text-gray-900 border-b p-6 flex justify-between items-center">
-			Surgical History
+			Interventi chirurgici
 			<button @click.stop.prevent="addSurgery" class="bg-indigo-500 hover:bg-indigo-700 text-white p-2 rounded-md">
 				<PlusIcon class="h-6 w-6" />
 			</button>
@@ -124,16 +124,16 @@ const fetchSurgeries = async () => {
 
 			<div v-for="(surgery, index) in surgeriesForm" :key="index" class="grid grid-cols-12 gap-5 mb-5 p-5">
 				<div class=" col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="procedure_name" class="mb-2 block text-sm font-medium text-gray-500">Procedure Name</label>
+					<label for="procedure_name" class="mb-2 block text-sm font-medium text-gray-500">Nome procedura</label>
 					<input v-model="surgery.procedure_name" name="procedure_name" id="procedure_name"
-						placeholder="Procedure Name"
+						placeholder="Nome procedura"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`surgeries[${index}].procedure_name`] }">
 					<span class="text-red-500 text-xs">{{ errors[`surgeries[${index}].procedure_name`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="date" class="mb-2 block text-sm font-medium text-gray-500">Date</label>
+					<label for="date" class="mb-2 block text-sm font-medium text-gray-500">Data</label>
 					<input type="date" v-model="surgery.date"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`surgeries[${index}].date`] }">
@@ -141,16 +141,16 @@ const fetchSurgeries = async () => {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="treatment" class="mb-2 block text-sm font-medium text-gray-500">Surgeon</label>
-					<input v-model="surgery.surgeon" name="surgeon" id="surgeon" placeholder="Surgeon"
+					<label for="treatment" class="mb-2 block text-sm font-medium text-gray-500">Chirurgo</label>
+					<input v-model="surgery.surgeon" name="surgeon" id="surgeon" placeholder="Chirurgo"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`surgeries[${index}].surgeon`] }">
 					<span class="text-red-500 text-xs">{{ errors[`surgeries[${index}].surgeon`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-5">
-					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Notes</label>
-					<textarea v-model="surgery.notes" name="notes" id="notes" placeholder="Notes" rows="5"
+					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Note</label>
+					<textarea v-model="surgery.notes" name="notes" id="notes" placeholder="Note" rows="5"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`surgeries[${index}].notes`] }">
 					</textarea>

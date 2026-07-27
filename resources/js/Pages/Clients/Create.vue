@@ -49,7 +49,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppLayout title="Add Client">
+  <AppLayout title="Aggiungi cliente">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         Aggiungi Cliente

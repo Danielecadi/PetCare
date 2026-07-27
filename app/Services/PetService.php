@@ -6,6 +6,7 @@ use App\Models\Breed;
 use App\Models\Pet;
 use App\Models\Species;
 use App\Models\Client;
+use Illuminate\Support\Str;
 
 class PetService
 {
@@ -92,7 +93,9 @@ class PetService
 
     public function searchSpecies($name)
     {
-        return Species::where('name', 'like', '%' . $name . '%')->get(['id', 'name']);
+        return Species::all(['id', 'name'])
+            ->filter(fn (Species $species) => Str::contains(Str::lower($species->name), Str::lower($name)))
+            ->values();
     }
 
     public function searchBreeds($speciesId)

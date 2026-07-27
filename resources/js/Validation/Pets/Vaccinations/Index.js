@@ -11,31 +11,31 @@ export const validateForm = (vaccinations) => {
 
 		// Validate vaccine_name
 		if (!vaccination.vaccine_name || !vaccination.vaccine_name.trim()) {
-			errors.value[`vaccinations[${i}].vaccine_name`] = 'This field is required.';
+			errors.value[`vaccinations[${i}].vaccine_name`] = 'Questo campo è obbligatorio.';
 		} else if (vaccination.vaccine_name.length > 255) {
-			errors.value[`vaccinations[${i}].vaccine_name`] = 'This field must not exceed 255 characters.';
+			errors.value[`vaccinations[${i}].vaccine_name`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate administered_at
 		if (!vaccination.administered_at) {
-			errors.value[`vaccinations[${i}].administered_at`] = 'This field is required.';
+			errors.value[`vaccinations[${i}].administered_at`] = 'Questo campo è obbligatorio.';
 		  } else if (!isValidDateFormat(vaccination.administered_at)) {
-			errors.value[`vaccinations[${i}].administered_at`] = 'This field must be a valid date.';
+			errors.value[`vaccinations[${i}].administered_at`] = 'Inserisci una data valida.';
 		  }
 
 		// Validate batch_number (optional)
 		if (vaccination.batch_number && vaccination.batch_number.length > 255) {
-			errors.value[`vaccinations[${i}].batch_number`] = 'This field must not exceed 255 characters.';
+			errors.value[`vaccinations[${i}].batch_number`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate administering_veterinarian (optional)
 		if (vaccination.administering_veterinarian && vaccination.administering_veterinarian.length > 255) {
-			errors.value[`vaccinations[${i}].administering_veterinarian`] = 'This field must not exceed 255 characters.';
+			errors.value[`vaccinations[${i}].administering_veterinarian`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate notes (optional)
 		if (vaccination.notes && typeof vaccination.notes !== 'string') {
-			errors.value[`vaccinations[${i}].notes`] = 'This field must be a string.';
+			errors.value[`vaccinations[${i}].notes`] = 'Questo campo deve contenere del testo.';
 		}
 	}
 };

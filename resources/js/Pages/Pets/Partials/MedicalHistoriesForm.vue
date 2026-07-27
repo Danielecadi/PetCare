@@ -42,12 +42,12 @@ const deleteHistory = async (index) => {
 		// Send the id to the backend
 		await axios.delete(`/pets/${pet.id}/histories/${historyId}`);
 
-		toast.success('Medical History successfully deleted!');
+		toast.success('Storia clinica eliminata con successo!');
 	} else {
 		const history = historiesForm.value[index];
 		await axios.delete(`/pets/${pet.id}/histories/${history.id}`);
 		historiesForm.value.splice(index, 1);
-		toast.success('Medical History successfully deleted!');
+		toast.success('Storia clinica eliminata con successo!');
 	}
 };
 
@@ -115,7 +115,7 @@ const fetchHistories = async () => {
 	<div class="max-w-full bg-white rounded-md mt-2">
 
 		<div class="text-lg font-semibold leading-6 text-gray-900 border-b p-6 flex justify-between items-center">
-			Medical History
+			Storia clinica
 			<button @click.stop.prevent="addHistory" class="bg-indigo-500 hover:bg-indigo-700 text-white p-2 rounded-md">
 				<PlusIcon class="h-6 w-6" />
 			</button>
@@ -125,15 +125,15 @@ const fetchHistories = async () => {
 
 			<div v-for="(history, index) in historiesForm" :key="index" class="grid grid-cols-12 gap-5 mb-5 p-5">
 				<div class=" col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="vaccine_name" class="mb-2 block text-sm font-medium text-gray-500">Condition</label>
-					<input v-model="history.condition" name="condition" id="condition" placeholder="Condition"
+					<label for="vaccine_name" class="mb-2 block text-sm font-medium text-gray-500">Condizione</label>
+					<input v-model="history.condition" name="condition" id="condition" placeholder="Condizione"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`histories[${index}].condition`] }">
 					<span class="text-red-500 text-xs">{{ errors[`histories[${index}].condition`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="diagnosis_date" class="mb-2 block text-sm font-medium text-gray-500">Diagnosis Date</label>
+					<label for="diagnosis_date" class="mb-2 block text-sm font-medium text-gray-500">Data della diagnosi</label>
 					<input type="date" v-model="history.diagnosis_date"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`histories[${index}].diagnosis_date`] }">
@@ -141,16 +141,16 @@ const fetchHistories = async () => {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="treatment" class="mb-2 block text-sm font-medium text-gray-500">Treatment</label>
-					<input v-model="history.treatment" name="treatment" id="treatment" placeholder="Treatment"
+					<label for="treatment" class="mb-2 block text-sm font-medium text-gray-500">Trattamento</label>
+					<input v-model="history.treatment" name="treatment" id="treatment" placeholder="Trattamento"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`histories[${index}].treatment`] }">
 					<span class="text-red-500 text-xs">{{ errors[`histories[${index}].treatment`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-5">
-					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Notes</label>
-					<textarea v-model="history.notes" name="notes" id="notes" placeholder="Notes" rows="5"
+					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Note</label>
+					<textarea v-model="history.notes" name="notes" id="notes" placeholder="Note" rows="5"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`histories[${index}].notes`] }"></textarea>
 					<span class="text-red-500 text-xs">{{ errors[`histories[${index}].notes`] }}</span>

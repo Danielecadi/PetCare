@@ -48,12 +48,12 @@ const deleteMedication = async (index) => {
 		// Send the id to the backend
 		await axios.delete(`/pets/${pet.id}/medications/${medicationId}`);
 
-		toast.success('Medication successfully deleted!');
+		toast.success('Farmaco eliminato con successo!');
 	} else {
 		const medication = medicationsForm.value[index];
 		await axios.delete(`/pets/${pet.id}/medications/${medication.id}`);
 		medicationsForm.value.splice(index, 1);
-		toast.success('Medication successfully deleted!');
+		toast.success('Farmaco eliminato con successo!');
 	}
 };
 
@@ -128,7 +128,7 @@ const fetchMedications = async () => {
 	<div class="max-w-full bg-white rounded-md mt-2">
 
 		<div class="text-lg font-semibold leading-6 text-gray-900 border-b p-6 flex justify-between items-center">
-			Medications
+			Farmaci
 			<button @click.stop.prevent="addMedication" class="bg-indigo-500 hover:bg-indigo-700 text-white p-2 rounded-md">
 				<PlusIcon class="h-6 w-6" />
 			</button>
@@ -138,16 +138,16 @@ const fetchMedications = async () => {
 
 			<div v-for="(medication, index) in medicationsForm" :key="index" class="grid grid-cols-12 gap-5 mb-5 p-5">
 				<div class=" col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="vaccine_name" class="mb-2 block text-sm font-medium text-gray-500">Medication Name</label>
+					<label for="vaccine_name" class="mb-2 block text-sm font-medium text-gray-500">Nome farmaco</label>
 					<input v-model="medication.medication_name" name="medication_name" id="medication_name"
-						placeholder="Medication Name"
+						placeholder="Nome farmaco"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`medications[${index}].medication_name`] }">
 					<span class="text-red-500 text-xs">{{ errors[`medications[${index}].medication_name`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
-					<label for="administered_at" class="mb-2 block text-sm font-medium text-gray-500">Date</label>
+					<label for="administered_at" class="mb-2 block text-sm font-medium text-gray-500">Data</label>
 					<input type="date" v-model="medication.administered_at"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`medications[${index}].administered_at`] }">
@@ -155,16 +155,16 @@ const fetchMedications = async () => {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-1">
-					<label for="batch_number" class="mb-2 block text-sm font-medium text-gray-500">Dosage</label>
-					<input v-model="medication.dosage" name="dosage" id="dosage" placeholder="Dosage"
+					<label for="batch_number" class="mb-2 block text-sm font-medium text-gray-500">Dosaggio</label>
+					<input v-model="medication.dosage" name="dosage" id="dosage" placeholder="Dosaggio"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`medications[${index}].dosage`] }">
 					<span class="text-red-500 text-xs">{{ errors[`medications[${index}].dosage`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-1">
-					<label for="frequency" class="mb-2 block text-sm font-medium text-gray-500">Frequency</label>
-					<input v-model="medication.frequency" name="frequency" id="frequency" placeholder="Frequency"
+					<label for="frequency" class="mb-2 block text-sm font-medium text-gray-500">Frequenza</label>
+					<input v-model="medication.frequency" name="frequency" id="frequency" placeholder="Frequenza"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`medications[${index}].frequency`] }">
 					<span class="text-red-500 text-xs">{{ errors[`medications[${index}].frequency`] }}</span>
@@ -172,17 +172,17 @@ const fetchMedications = async () => {
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-2">
 					<label for="administering_veterinarian"
-						class="mb-2 block text-sm font-medium text-gray-500">Administering Veterinarian</label>
+						class="mb-2 block text-sm font-medium text-gray-500">Veterinario somministratore</label>
 					<input v-model="medication.administering_veterinarian" name="administering_veterinarian" id="frequency"
-						placeholder="Administering Veterinarian"
+						placeholder="Veterinario somministratore"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`medications[${index}].administering_veterinarian`] }">
 					<span class="text-red-500 text-xs">{{ errors[`medications[${index}].administering_veterinarian`] }}</span>
 				</div>
 
 				<div class="col-span-12 md:col-span-6 lg:col-span-3">
-					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Notes</label>
-					<textarea v-model="medication.notes" name="notes" id="notes" placeholder="Notes" rows="5"
+					<label for="notes" class="mb-2 block text-sm font-medium text-gray-500">Note</label>
+					<textarea v-model="medication.notes" name="notes" id="notes" placeholder="Note" rows="5"
 						class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
 						:class="{ 'border-red-500': errors[`medications[${index}].notes`] }"></textarea>
 					<span class="text-red-500 text-xs">{{ errors[`medications[${index}].notes`] }}</span>
@@ -200,7 +200,7 @@ const fetchMedications = async () => {
 			<div class="col-span-12 m-5 pb-5">
 				<button type="submit" :disabled="isSubmitting"
 					class="w-full rounded-lg border border-indigo-700 bg-indigo-700 px-8 py-4 text-center text-lg font-medium text-white shadow-sm transition-all hover:border-indigo-800 hover:bg-indigo-800 disabled:cursor-not-allowed disabled:border-indigo-300 disabled:bg-indigo-300">
-					Save Medications
+					Salva farmaci
 				</button>
 			</div>
 	</form>

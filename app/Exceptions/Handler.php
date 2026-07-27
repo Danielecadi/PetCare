@@ -35,29 +35,29 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof QueryException) {
             if ($request->expectsJson()) {
-                return response()->json(['message' => 'A database error occurred.', 'error' => $e->getMessage()], 500);
+                return response()->json(['message' => 'Si è verificato un errore nel database.', 'error' => $e->getMessage()], 500);
             }
 
             if ($request->inertia()) {
-                return redirect()->back()->with('error', 'A database error occurred.');
+                return redirect()->back()->with('error', 'Si è verificato un errore nel database.');
             }
         }
         
         if ($e instanceof ModelNotFoundException) {
             if ($request->expectsJson()) {
 
-                return response()->json(['message' => 'Resource not found.', 'error' => $e->getMessage()], 404);
+                return response()->json(['message' => 'Risorsa non trovata.', 'error' => $e->getMessage()], 404);
             }
 
             if ($request->inertia()) {
-                return redirect()->back()->with('error', 'Resource not found.');
+                return redirect()->back()->with('error', 'Risorsa non trovata.');
             }
         }
 
         if ($e instanceof ValidationException) {
             if ($request->expectsJson()) {
                 return response()->json([
-                    'message' => 'Validation failed.',
+                    'message' => 'La validazione non è andata a buon fine.',
                     'errors' => $e->validator->errors()
                 ], 422);
             }
@@ -69,31 +69,31 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof NotFoundHttpException) {
             if ($request->expectsJson()) {
-                return response()->json(['message' => 'Resource not found.', 'error' => $e->getMessage()], 404);
+                return response()->json(['message' => 'Risorsa non trovata.', 'error' => $e->getMessage()], 404);
             }
     
             if ($request->inertia()) {
-                return redirect()->back()->with('error', 'Resource not found.');
+                return redirect()->back()->with('error', 'Risorsa non trovata.');
             }
         }
     
         if ($e instanceof MethodNotAllowedHttpException) {
             if ($request->expectsJson()) {
-                return response()->json(['message' => 'Method not allowed.', 'error' => $e->getMessage()], 405);
+                return response()->json(['message' => 'Metodo non consentito.', 'error' => $e->getMessage()], 405);
             }
     
             if ($request->inertia()) {
-                return redirect()->back()->with('error', 'Method not allowed.');
+                return redirect()->back()->with('error', 'Metodo non consentito.');
             }
         }
 
         if ($e instanceof BadMethodCallException) {
             if ($request->expectsJson()) {
-                return response()->json(['message' => 'Method not found.', 'error' => $e->getMessage()], 500);
+                return response()->json(['message' => 'Metodo non trovato.', 'error' => $e->getMessage()], 500);
             }
     
             if ($request->inertia()) {
-                return redirect()->back()->with('error', 'Method not found.');
+                return redirect()->back()->with('error', 'Metodo non trovato.');
             }
         }
 

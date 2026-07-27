@@ -11,26 +11,26 @@ export const validateForm = (histories) => {
 
 		// Validate condition
 		if (!history.condition || !history.condition.trim()) {
-			errors.value[`histories[${i}].condition`] = 'This field is required.';
+			errors.value[`histories[${i}].condition`] = 'Questo campo è obbligatorio.';
 		} else if (history.condition.length > 255) {
-			errors.value[`histories[${i}].condition`] = 'This field must not exceed 255 characters.';
+			errors.value[`histories[${i}].condition`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate diagnosis_date
 		if (!history.diagnosis_date) {
-			errors.value[`histories[${i}].diagnosis_date`] = 'This field is required.';
+			errors.value[`histories[${i}].diagnosis_date`] = 'Questo campo è obbligatorio.';
 		} else if (!isValidDateFormat(history.diagnosis_date)) {
-			errors.value[`histories[${i}].diagnosis_date`] = 'This field must be a valid date.';
+			errors.value[`histories[${i}].diagnosis_date`] = 'Inserisci una data valida.';
 		}
 
 		// Validate treatment (optional)
 		if (history.treatment && history.treatment.length > 255) {
-			errors.value[`histories[${i}].treatment`] = 'This field must not exceed 255 characters.';
+			errors.value[`histories[${i}].treatment`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate notes (optional)
 		if (history.notes && typeof history.notes !== 'string') {
-			errors.value[`histories[${i}].notes`] = 'This field must be a string.';
+			errors.value[`histories[${i}].notes`] = 'Questo campo deve contenere del testo.';
 		}
 	}
 };

@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <AppLayout title="Show Client">
+  <AppLayout title="Dettaglio cliente">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         Cliente: {{ client.name }}

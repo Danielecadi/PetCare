@@ -48,7 +48,7 @@ const submitAppointmentForm = async () => {
 	validateForm(createForm);
 
 	if (Object.keys(errors.value).length > 0) {
-		toast.error("Please correct the errors in the form.");
+		toast.error("Correggi gli errori nel modulo.");
 		return;
 	}
 
@@ -64,7 +64,7 @@ const submitAppointmentForm = async () => {
 	props.fetchAllAppointments();
 	closeCreateModal()
 	resetForm()
-	toast.success("Appointment created successfully!");
+	toast.success("Appuntamento creato con successo!");
 };
 
 const setClientId = () => {
@@ -117,11 +117,11 @@ onMounted(async () => {
                   <div class="col-span-2">
                     <label for="client"
                       class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Cliente</label>
-                    <VueMultiselect v-model="selectedCreateClient" :options="props.matchingClients" :multiple="false"
-                      :clear-on-select="true" placeholder="Type to search" label="name" track-by="id"
+                    <VueMultiselect v-model="selectedCreateClient" :options="props.matchingClients" :multiple="false" select-label="Premi Invio per selezionare"
+					  :clear-on-select="true" placeholder="Cerca un cliente" label="name" track-by="id"
                       @search-change="props.searchClients" @input="setClientId" :class="{ 'error': errors.client_id }">
                       <template #noUser>
-                        Oops! Nessun Utente trovato. Prova a digitare un nome diverso.
+						Nessun cliente trovato. Prova con un nome diverso.
                       </template>
                     </VueMultiselect>
                     <div v-if="errors.client_id" class="text-xs text-red-500 mt-1">
@@ -129,8 +129,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
-                    <label for="start_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Inizio
-                      Data</label>
+                    <label for="start_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Data e ora di inizio</label>
                     <input v-model="createForm.start_time" type="datetime-local" name="start_time" id="start_time"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                       :class="errors.start_time ? 'border-red-500' : 'border-gray-300'">
@@ -139,8 +138,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
-                    <label for="end_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Fine
-                      Data</label>
+                    <label for="end_time" class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Data e ora di fine</label>
                     <input v-model="createForm.end_time" type="datetime-local" name="end_time" id="end_time"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                       :class="errors.end_time ? 'border-red-500' : 'border-gray-300'">

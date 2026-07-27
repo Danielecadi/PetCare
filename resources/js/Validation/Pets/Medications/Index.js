@@ -11,36 +11,36 @@ export const validateForm = (medications) => {
 
 		// Validate medication_name
 		if (!medication.medication_name || !medication.medication_name.trim()) {
-			errors.value[`medications[${i}].medication_name`] = 'This field is required.';
+			errors.value[`medications[${i}].medication_name`] = 'Questo campo è obbligatorio.';
 		} else if (medication.medication_name.length > 255) {
-			errors.value[`medications[${i}].medication_name`] = 'This field must not exceed 255 characters.';
+			errors.value[`medications[${i}].medication_name`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate administered_at
 		if (!medication.administered_at) {
-			errors.value[`medications[${i}].administered_at`] = 'This field is required.';
+			errors.value[`medications[${i}].administered_at`] = 'Questo campo è obbligatorio.';
 		} else if (!isValidDateFormat(medication.administered_at)) {
-			errors.value[`medications[${i}].administered_at`] = 'This field must be a valid date.';
+			errors.value[`medications[${i}].administered_at`] = 'Inserisci una data valida.';
 		}
 
 		// Validate dosage (optional)
 		if (medication.dosage && medication.dosage.length > 255) {
-			errors.value[`medications[${i}].dosage`] = 'This field must not exceed 255 characters.';
+			errors.value[`medications[${i}].dosage`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate frequency (optional)
 		if (medication.frequency && medication.frequency.length > 255) {
-			errors.value[`medications[${i}].frequency`] = 'This field must not exceed 255 characters.';
+			errors.value[`medications[${i}].frequency`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate administering_veterinarian (optional)
 		if (medication.administering_veterinarian && medication.administering_veterinarian.length > 255) {
-			errors.value[`medications[${i}].administering_veterinarian`] = 'This field must not exceed 255 characters.';
+			errors.value[`medications[${i}].administering_veterinarian`] = 'Questo campo non può superare i 255 caratteri.';
 		}
 
 		// Validate notes (optional)
 		if (medication.notes && typeof medication.notes !== 'string') {
-			errors.value[`medications[${i}].notes`] = 'This field must be a string.';
+			errors.value[`medications[${i}].notes`] = 'Questo campo deve contenere del testo.';
 		}
 	}
 };

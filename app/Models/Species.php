@@ -14,11 +14,39 @@ class Species extends Model
 {
     use HasFactory;
 
+    private const ITALIAN_NAMES = [
+        'Cat' => 'Gatto',
+        'Dog' => 'Cane',
+        'Bird' => 'Uccello',
+        'Rabbit' => 'Coniglio',
+        'Fish' => 'Pesce',
+        'Reptile' => 'Rettile',
+        'Horse' => 'Cavallo',
+        'Cow' => 'Mucca',
+        'Sheep' => 'Pecora',
+        'Goat' => 'Capra',
+        'Pig' => 'Maiale',
+        'Chicken' => 'Pollo',
+        'Duck' => 'Anatra',
+        'Turkey' => 'Tacchino',
+        'Guinea Pig' => 'Porcellino d\'India',
+        'Hamster' => 'Criceto',
+        'Ferret' => 'Furetto',
+        'Chinchilla' => 'Cincillà',
+        'Parrot' => 'Pappagallo',
+        'Turtle' => 'Tartaruga',
+    ];
+
 	protected $table = 'species';
 
 	protected $fillable = [
 		'name',
 	];
+
+    public function getNameAttribute(string $value): string
+    {
+        return self::ITALIAN_NAMES[$value] ?? $value;
+    }
 
 	public function pet(): BelongsTo
 	{

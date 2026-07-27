@@ -186,10 +186,10 @@ const fetchBreeds = async (speciesId) => {
 </script>
 
 <template>
-	<AppLayout title="Add Pet">
+	<AppLayout title="Aggiungi animale">
 		<template #header>
 			<h2 class="text-lg font-semibold leading-6 text-gray-900">
-				Add Pet
+				Aggiungi animale
 			</h2>
 		</template>
 
@@ -198,21 +198,21 @@ const fetchBreeds = async (speciesId) => {
 				<div class="grid grid-cols-12 gap-5">
 
 					<div class="col-span-6">
-						<label for="name" class="mb-2 block text-sm font-medium text-gray-700">Name</label>
+						<label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nome</label>
 						<input v-model="createForm.name" type="text" id="name"
 							class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 placeholder:text-sm"
-							:class="{ 'border-red-500 focus:border-red-500 focus:ring-red-500': errors.name }" placeholder="Pet Name" />
+							:class="{ 'border-red-500 focus:border-red-500 focus:ring-red-500': errors.name }" placeholder="Nome dell'animale" />
 						<div v-if="errors.name" class="text-sm text-red-500 mt-1">
 							{{ errors.name }}
 						</div>
 					</div>
 					<div class="col-span-6">
-						<label for="client_id" class="mb-2 block text-sm font-medium text-gray-700">Client</label>
+						<label for="client_id" class="mb-2 block text-sm font-medium text-gray-700">Cliente</label>
 						<VueMultiselect v-model="selectedUser" :class="{ 'error': errors.client_id }" :options="matchingUsers"
-							:multiple="false" :clear-on-select="true" placeholder="Type to search" label="name" track-by="id"
+							:multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" placeholder="Digita per cercare" label="name" track-by="id"
 							@search-change="fetchUsers" @input="setUserId">
 							<template #noUser>
-								Oops! No users found. Try a different search query.
+								Nessun utente trovato. Prova con una ricerca diversa.
 							</template>
 						</VueMultiselect>
 						<div v-if="errors.client_id" class="text-sm text-red-500 mt-1">
@@ -221,12 +221,12 @@ const fetchBreeds = async (speciesId) => {
 					</div>
 
 					<div class="col-span-12 sm:col-span-6">
-						<label for="species" class="mb-2 block text-sm font-medium text-gray-700">Species</label>
+						<label for="species" class="mb-2 block text-sm font-medium text-gray-700">Specie</label>
 						<VueMultiselect v-model="selectedSpecies" :class="{ 'error': errors.species_id }" :options="matchingSpecies"
-							:multiple="false" :clear-on-select="true" placeholder="Type to search" label="name" track-by="id"
+							:multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" placeholder="Digita per cercare" label="name" track-by="id"
 							@search-change="fetchSpecies" @input="setSpeciesId">
 							<template #noSpecies>
-								Oops! No species found. Try a different search query.
+								Nessuna specie trovata. Prova con una ricerca diversa.
 							</template>
 						</VueMultiselect>
 						<div v-if="errors.species_id" class="text-sm text-red-500 mt-1">
@@ -234,42 +234,42 @@ const fetchBreeds = async (speciesId) => {
 						</div>
 					</div>
 					<div class="col-span-12 sm:col-span-6">
-						<label for="breed" class="mb-2 block text-sm font-medium text-gray-700">Breed</label>
-						<VueMultiselect v-model="selectedBreed" :options="matchingBreeds" :multiple="false" :clear-on-select="true"
-							placeholder="Type to search" label="name" track-by="id">
+						<label for="breed" class="mb-2 block text-sm font-medium text-gray-700">Razza</label>
+						<VueMultiselect v-model="selectedBreed" :options="matchingBreeds" :multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare"
+							placeholder="Digita per cercare" label="name" track-by="id">
 							<template #noResult1>
-								Oops! No breeds found. Try a different search query.
+								Nessuna razza trovata. Prova con una ricerca diversa.
 							</template>
 						</VueMultiselect>
 					</div>
 
 					<div class="col-span-8 sm:col-span-10">
-						<label for="gender" class="mb-2 block text-sm font-medium text-gray-700">Gender</label>
+						<label for="gender" class="mb-2 block text-sm font-medium text-gray-700">Sesso</label>
 						<select v-model="createForm.gender" id="gender"
 							class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-50">
-							<option disabled selected>Select Gender</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-							<option value="none">None</option>
+							<option disabled selected>Seleziona il sesso</option>
+							<option value="male">Maschio</option>
+							<option value="female">Femmina</option>
+							<option value="none">Non specificato</option>
 						</select>
 					</div>
 					<div class="col-span-4 sm:col-span-2">
-						<label for="age" class="mb-2 block text-sm font-medium text-gray-700">Age</label>
+						<label for="age" class="mb-2 block text-sm font-medium text-gray-700">Età</label>
 						<input v-model="createForm.age" type="number" id="age"
 							class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
 							placeholder="1" />
 					</div>
 
 					<div class="col-span-12">
-
+						<!--
 						<div class="mx-auto max-w-full">
-							<label for="photo" class="mb-2 block text-sm font-medium text-gray-700">Pet Photo</label>
+							<label for="photo" class="mb-2 block text-sm font-medium text-gray-700">Foto dell'animale</label>
 							<label
 								class="flex w-full cursor-pointer appearance-none items-center justify-center rounded-md border-2 border-dashed border-gray-200 p-6 transition-all hover:border-indigo-700"
 								:class="{ 'border-red-500 focus:border-red-500 focus:ring-red-500': errors.photo }">
 								<div class="space-y-1 text-center">
 									<div class="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
-										<img v-if="createForm.photo" :src="createForm.photo.url" alt="Pet Photo"
+										<img v-if="createForm.photo" :src="createForm.photo.url" alt="Foto dell'animale"
 											class="h-20 w-20 rounded-full" />
 										<div v-else>
 											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -280,10 +280,9 @@ const fetchBreeds = async (speciesId) => {
 										</div>
 									</div>
 									<div class="text-gray-600">
-										<a href="#" class="font-medium text-indigo-500 hover:text-indigo-700">Click to upload</a> or drag and
-										drop
+										<a href="#" class="font-medium text-indigo-500 hover:text-indigo-700">Fai clic per caricare</a> oppure trascina e rilascia
 									</div>
-									<p class="text-sm text-gray-500">PNG or JPG (max. 1mb)</p>
+									<p class="text-sm text-gray-500">PNG o JPG (max 1 MB)</p>
 								</div>
 								<input @change="handleFileChange" id="photo" name="photo" type="file" class="sr-only" />
 							</label>
@@ -291,12 +290,13 @@ const fetchBreeds = async (speciesId) => {
 								{{ errors.photo }}
 							</div>
 						</div>
+					-->
 					</div>
-
+				
 					<div class="col-span-12">
 						<button type="submit" :disabled="isSubmitting"
 							class="w-full rounded-lg border border-indigo-700 bg-indigo-700 px-8 py-4 text-center text-lg font-medium text-white shadow-sm transition-all hover:border-indigo-800 hover:bg-indigo-800 disabled:cursor-not-allowed disabled:border-indigo-300 disabled:bg-indigo-300">
-							Add Pet
+							Aggiungi animale
 						</button>
 					</div>
 

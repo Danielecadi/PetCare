@@ -119,7 +119,7 @@ const handleBulkDelete = () => {
 </script>
 
 <template>
-    <AppLayout title="Clients">
+    <AppLayout title="Clienti">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Clienti
@@ -174,7 +174,7 @@ const handleBulkDelete = () => {
                                     fill="currentFill" />
 
                             </svg>
-                            <span class="sr-only">Loading...</span>
+                            <span class="sr-only">Caricamento...</span>
                         </div>
                         <table v-else class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="hidden md:table-header-group text-xs text-gray-400 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

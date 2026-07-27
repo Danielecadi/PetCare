@@ -13,18 +13,18 @@ const props = defineProps({
 <template>
     <div class="px-4 py-5 sm:p-6">
         <template v-if="pet.medications.length === 0">
-            <p class="text-center text-gray-500 py-4">No images found.</p>
+            <p class="text-center text-gray-500 py-4">Nessun farmaco trovato.</p>
         </template>
         <template v-else>
             <table class="min-w-full divide-y divide-gray-300">
                 <thead>
                     <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Medication Name</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Administering Date</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Dosage</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Frequency</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Administering Veterinarian</th>
-                        <th scope="col" class="py-3.5 text-right text-sm font-semibold text-gray-900">Notes</th>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Nome farmaco</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Data di somministrazione</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Dosaggio</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Frequenza</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Veterinario somministratore</th>
+                        <th scope="col" class="py-3.5 text-right text-sm font-semibold text-gray-900">Note</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
