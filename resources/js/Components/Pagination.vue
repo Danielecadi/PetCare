@@ -34,9 +34,9 @@ const endItem = computed(() => {
 	<nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
 		aria-label="Table navigation">
 		<span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-			Showing
+			Mostrando
 			<span class="font-semibold text-gray-900 dark:text-white">{{ startItem }}-{{ endItem}}</span>
-			of
+			di
 			<span class="font-semibold text-gray-900 dark:text-white">{{ props.meta.totalItems }}</span>
 		</span>
 		<ul class="inline-flex items-stretch -space-x-px">
@@ -45,7 +45,7 @@ const endItem = computed(() => {
 				<a href="#" @click="changePage(meta.currentPage - 1)" :disabled="meta && meta.currentPage === 1"
 					class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 					:class="{ 'cursor-not-allowed opacity-50': meta && meta.currentPage === 1 }">
-					<span class="sr-only">Previous</span>
+					<span class="sr-only">Precedente</span>
 					<ArrowSmallLeftIcon class="w-5 h-5" />
 				</a>
 			</li>
@@ -62,7 +62,7 @@ const endItem = computed(() => {
 				<a href="#" @click="changePage(meta.currentPage + 1)" :disabled="meta.currentPage === meta.lastPage"
 					class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 					:class="{ 'cursor-not-allowed opacity-50': meta && meta.currentPage === meta.lastPage }">
-					<span class="sr-only">Next</span>
+					<span class="sr-only">Successiva</span>
 					<ArrowSmallRightIcon class="w-5 h-5" />
 				</a>
 			</li>

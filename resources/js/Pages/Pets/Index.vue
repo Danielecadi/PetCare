@@ -34,7 +34,7 @@ const fetchPets = async (page = 1) => {
 const handleSearch = async ({ search, keywords }) => {
     if (!keywords) {
         // Show a toast error
-        toast.warning('Enter a search term')
+        toast.warning('Inserisci un termine per la ricerca')
     } else {
         // If not empty, perform the search
         pets.value = await search('/pets/search');

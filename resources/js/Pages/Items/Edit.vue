@@ -53,10 +53,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppLayout title="Add Item">
+  <AppLayout title="Modifica articolo">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Edit Item
+        Modifica articolo
       </h2>
     </template>
 
@@ -65,43 +65,43 @@ onMounted(() => {
         <form @submit.prevent="submitForm">
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <div class="sm:col-span-2">
-              <label for="item_name" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Item Name</label>
+              <label for="item_name" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Nome articolo</label>
               <input v-model="updateForm.item_name" type="text" name="item_name" id="item_name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 :class="errors.item_name ? 'border-red-500' : ''"
-                placeholder="Item name">
+                placeholder="Nome dell'articolo">
               <span class="text-red-500 text-xs">{{ errors.item_name }}</span>
             </div>
             <div class="w-full">
-              <label for="quantity" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Quantity</label>
+              <label for="quantity" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Quantità</label>
               <input v-model="updateForm.quantity" type="number" name="quantity" id="quantity"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 :class="errors.quantity ? 'border-red-500' : ''"
-                placeholder="Item quantity">
+                placeholder="Quantità dell'articolo">
               <span class="text-red-500 text-xs">{{ errors.quantity }}</span>
             </div>
             <div class="w-full">
-              <label for="unit_price" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Unit Price</label>
+              <label for="unit_price" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Prezzo unitario</label>
               <input v-model="updateForm.unit_price" type="text" name="unit_price" id="unit_price"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 :class="errors.unit_price ? 'border-red-500' : ''"
-                placeholder="Item price">
+                placeholder="Prezzo dell'articolo">
               <span class="text-red-500 text-xs">{{ errors.unit_price }}</span>
             </div>
             <div class="sm:col-span-2">
-              <label for="description" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Description</label>
+              <label for="description" class="block mb-2 text-xs font-medium text-gray-400 dark:text-white">Descrizione</label>
               <textarea v-model="updateForm.description" 
                 type="text" name="description" id="description" rows="4"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
                 :class="errors.description ? 'border-red-500' : ''"
-                placeholder="Item description"></textarea>
+                placeholder="Descrizione dell'articolo"></textarea>
               <span class="text-red-500 text-xs">{{ errors.description }}</span>
             </div>
           </div>
 
           <button type="submit"
             class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-indigo-900 hover:bg-indigo-800 disabled:bg-indigo-300 disabled:cursor-not-allowed">
-            Update Item
+            Aggiorna articolo
           </button>
           
         </form>
