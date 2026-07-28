@@ -80,7 +80,7 @@ class PetService
 
     public function fetchAllSpecies()
     {
-        return Species::whereIn('name', ['Cane', 'Gatto'])->get(['id', 'name']);
+        return Species::paginate(10)->all();
     }
 
     public function fetchAllBreeds($speciesId)
@@ -95,8 +95,7 @@ class PetService
 
     public function searchSpecies($name)
     {
-        return Species::whereIn('name', ['Cane', 'Gatto'])
-            ->get(['id', 'name'])
+        return Species::all(['id', 'name'])
             ->filter(fn (Species $species) => Str::contains(Str::lower($species->name), Str::lower($name)))
             ->values();
     }
