@@ -10,13 +10,15 @@ use Illuminate\Support\Str;
 
 class PetService
 {
-    public function createPet(array $data): void
+    public function createPet(array $data): Pet
     {
         $pet = Pet::create($data);
 
         if (array_key_exists('photo', $data) && $data['photo']->isValid()) {
             $this->handlePhotoUpload($pet, $data['photo']);
         }
+
+        return $pet;
     }
 
     public function updatePet($id, array $data): void

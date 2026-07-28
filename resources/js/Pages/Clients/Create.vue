@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import { onMounted, ref } from 'vue'
+import { h, onMounted, ref } from 'vue'
+import { router } from '@inertiajs/vue3'
 import { useToast } from "vue-toastification"
 import Spinner from '@/Components/Spinner.vue'
 import { validateForm, watchFields, errors } from '@/Validation/Clients/Index';
@@ -39,7 +40,21 @@ const submitForm = async () => {
   const response = await axios.post('/clients/store', createForm.value);
   resetForm();
   isSubmitting.value = false;
-  toast.success(response.data.message);
+
+  toast.success(
+    h('div', { class: 'flex flex-col gap-1' }, [
+      h('span', { class: 'font-medium' }, response.data.message),
+      h('a', {
+        href: '#',
+        class: 'text-indigo-700 font-semibold underline',
+        onClick: (event) => {
+          event.preventDefault();
+          router.visit(route('clients.show', { slug: response.data.slug }));
+        }
+      }, 'Visualizza')
+    ]),
+    { timeout: 6000 }
+  );
 };
 
 onMounted(() => {

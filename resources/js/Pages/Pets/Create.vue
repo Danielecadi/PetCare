@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import { ref, watch, nextTick, onMounted } from 'vue'
-import { useForm } from "@inertiajs/vue3"
+import { h, ref, watch, nextTick, onMounted } from 'vue'
+import { useForm, router } from "@inertiajs/vue3"
 import VueMultiselect from 'vue-multiselect'
 import 'vue-multiselect/dist/vue-multiselect.css'
 import { useToast } from "vue-toastification"
@@ -153,7 +153,20 @@ const createPet = async () => {
 
 	resetForm();
 
-	toast.success(response.data.message);
+	toast.success(
+		h('div', { class: 'flex flex-col gap-1' }, [
+			h('span', { class: 'font-medium' }, response.data.message),
+			h('a', {
+				href: '#',
+				class: 'text-indigo-700 font-semibold underline',
+				onClick: (event) => {
+					event.preventDefault();
+					router.visit(route('pets.show', { slug: response.data.slug }));
+				}
+			}, 'Visualizza')
+		]),
+		{ timeout: 6000 }
+	);
 
 	isSubmitting.value = false;
 };

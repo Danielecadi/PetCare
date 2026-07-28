@@ -44,8 +44,11 @@ class ClientController extends Controller
 
     public function store(ClientStoreRequest $request): JsonResponse
     {
-        $user = $this->clientService->storeClient($request->validated());
-        return response()->json(['message' => 'Cliente aggiunto con successo'], 201);
+        $client = $this->clientService->storeClient($request->validated());
+        return response()->json([
+            'message' => 'Cliente aggiunto con successo',
+            'slug' => $client->slug,
+        ], 201);
     }
 
     public function update(ClientUpdateRequest $request, $id): JsonResponse

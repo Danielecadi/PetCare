@@ -47,10 +47,11 @@ class PetController extends Controller
 
 	public function store(PetStoreRequest $request): JsonResponse
 	{
-		$this->petService->createPet($request->validated());
+		$pet = $this->petService->createPet($request->validated());
 
 		return response()->json([
-			'message' => 'Animale aggiunto con successo!'
+			'message' => 'Animale aggiunto con successo!',
+			'slug' => $pet->slug,
 		], 201);
 	}
 
