@@ -50,7 +50,7 @@ class PetController extends Controller
 		$this->petService->createPet($request->validated());
 
 		return response()->json([
-			'message' => 'Pet successfully added!'
+			'message' => 'Animale aggiunto con successo!'
 		], 201);
 	}
 
@@ -72,7 +72,7 @@ class PetController extends Controller
 		$this->petService->updatePet($id, $request->validated());
 
 		return response()->json([
-			'message' => 'Pet successfully updated!'
+			'message' => 'Animale aggiornato con successo!'
 		], 200);
 	}
 
@@ -81,7 +81,7 @@ class PetController extends Controller
 		$this->petService->deletePet($id);
 
 		return response()->json([
-			'message' => 'Pet successfully deleted!'
+			'message' => 'Animale eliminato con successo!'
 		], 200);
 	}
 
