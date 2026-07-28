@@ -80,7 +80,7 @@ class PetService
 
     public function fetchAllSpecies()
     {
-        return Species::paginate(10)->all();
+        return Species::all()->unique('name')->values();
     }
 
     public function fetchAllBreeds($speciesId)
@@ -97,6 +97,7 @@ class PetService
     {
         return Species::all(['id', 'name'])
             ->filter(fn (Species $species) => Str::contains(Str::lower($species->name), Str::lower($name)))
+            ->unique('name')
             ->values();
     }
 
