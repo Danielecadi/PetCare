@@ -14,29 +14,6 @@ class BreedsSeeder extends Seeder
      */
     public function run(): void
     {
-        $speciesMap = [
-            'Cat' => 'Gatto',
-            'Dog' => 'Cane',
-            'Bird' => 'Uccello',
-            'Rabbit' => 'Coniglio',
-            'Fish' => 'Pesce',
-            'Reptile' => 'Rettile',
-            'Horse' => 'Cavallo',
-            'Cow' => 'Mucca',
-            'Sheep' => 'Pecora',
-            'Goat' => 'Capra',
-            'Pig' => 'Maiale',
-            'Chicken' => 'Pollo',
-            'Duck' => 'Anatra',
-            'Turkey' => 'Tacchino',
-            'Guinea Pig' => 'Porcellino d\'India',
-            'Hamster' => 'Criceto',
-            'Ferret' => 'Furetto',
-            'Chinchilla' => 'Cincillà',
-            'Parrot' => 'Pappagallo',
-            'Turtle' => 'Tartaruga',
-        ];
-
         $breeds = [
             'Cat' => ['Ragdoll', 'Exotic Shorthair', 'British Shorthair', 'Persian cat', 'Maine Coon'],
             'Dog' => ['Affenpinscher', 'Afghan Hound', 'Airedale Terrier', 'Akita', 'Alaskan Klee Kai'],
@@ -60,10 +37,8 @@ class BreedsSeeder extends Seeder
             'Turtle' => ['African Aquatic Sideneck', 'Asian Box', 'Eastern Box', 'Mississippi Map', 'Russian']
         ];
 
-        foreach ($breeds as $legacySpeciesName => $breedList) {
-            $species = Species::where('name', $legacySpeciesName)
-                ->orWhere('name', $speciesMap[$legacySpeciesName] ?? $legacySpeciesName)
-                ->first();
+        foreach ($breeds as $speciesName => $breedList) {
+            $species = Species::where('name', $speciesName)->first();
 
             if (!$species) {
                 continue;

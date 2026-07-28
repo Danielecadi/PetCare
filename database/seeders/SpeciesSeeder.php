@@ -13,38 +13,10 @@ class SpeciesSeeder extends Seeder
      */
     public function run(): void
     {
-        $speciesMap = [
-            'Cat' => 'Gatto',
-            'Dog' => 'Cane',
-            'Bird' => 'Uccello',
-            'Rabbit' => 'Coniglio',
-            'Fish' => 'Pesce',
-            'Reptile' => 'Rettile',
-            'Horse' => 'Cavallo',
-            'Cow' => 'Mucca',
-            'Sheep' => 'Pecora',
-            'Goat' => 'Capra',
-            'Pig' => 'Maiale',
-            'Chicken' => 'Pollo',
-            'Duck' => 'Anatra',
-            'Turkey' => 'Tacchino',
-            'Guinea Pig' => 'Porcellino d\'India',
-            'Hamster' => 'Criceto',
-            'Ferret' => 'Furetto',
-            'Chinchilla' => 'Cincillà',
-            'Parrot' => 'Pappagallo',
-            'Turtle' => 'Tartaruga',
-        ];
+        $species = ['Cat', 'Dog', 'Bird', 'Rabbit', 'Fish', 'Reptile', 'Horse', 'Cow', 'Sheep', 'Goat', 'Pig', 'Chicken', 'Duck', 'Turkey', 'Guinea Pig', 'Hamster', 'Ferret', 'Chinchilla', 'Parrot', 'Turtle'];
 
-        foreach ($speciesMap as $legacyName => $italianName) {
-            $species = Species::where('name', $legacyName)->first();
-
-            if ($species) {
-                $species->update(['name' => $italianName]);
-                continue;
-            }
-
-            Species::firstOrCreate(['name' => $italianName]);
+        foreach ($species as $specie) {
+            Species::firstOrCreate(['name' => $specie]);
         }
     }
 }

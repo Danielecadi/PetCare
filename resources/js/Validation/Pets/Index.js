@@ -35,10 +35,10 @@ export const validateForm = (form) => {
 	}
 
 	// Validate breed_id
-	if (form.breed_id !== null && form.breed_id !== '' && typeof form.breed_id !== 'number') {
+	if (form.breed_id === null || form.breed_id === '' || form.breed_id === undefined) {
+			errors.value.breed_id = 'Questo campo è obbligatorio';
+	} else if (typeof form.breed_id !== 'number') {
 			errors.value.breed_id = 'Questo campo deve essere un numero intero';
-	} else if (form.breed_id === null || form.breed_id === '') {
-			delete errors.value.breed_id;
 	}
 
 	// Validate age

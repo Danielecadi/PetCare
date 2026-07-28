@@ -6,6 +6,8 @@ use Tests\TestCase;
 use App\Models\Pet;
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Breed;
+use App\Models\Species;
 use App\Http\Requests\Pet\PetStoreRequest;
 use App\Http\Requests\Pet\PetUpdateRequest;
 use App\Http\Requests\Pet\PetBulkDeleteRequest;
@@ -48,7 +50,11 @@ class PetTest extends TestCase
 
     public function testStore()
     {
-        $petData = ['name' => 'Test Pet', 'species_id' => 1, 'client_id' => 1]; // Add more fields as necessary
+        $client = Client::factory()->create();
+        $species = Species::create(['name' => 'Gatto']);
+        $breed = Breed::create(['species_id' => $species->id, 'name' => 'Persiano']);
+
+        $petData = ['name' => 'Test Pet', 'species_id' => $species->id, 'breed_id' => $breed->id, 'client_id' => $client->id];
         $request = new PetStoreRequest();
         $request->setContainer(app());
         $request->initialize([], $petData);
@@ -56,6 +62,20 @@ class PetTest extends TestCase
         $request->setValidator(app()->get('validator')->make($petData, $request->rules()));
         $response = $this->post('/pets/store', $request->validated());
         $response->assertStatus(201);
+    }
+
+    public function testStoreRequiresBreed()
+    {
+        $client = Client::factory()->create();
+        $species = Species::create(['name' => 'Gatto']);
+
+        $response = $this->post('/pets/store', [
+            'name' => 'Test Pet',
+            'species_id' => $species->id,
+            'client_id' => $client->id,
+        ]);
+
+        $response->assertSessionHasErrors('breed_id');
     }
 
     public function testUpdate()
