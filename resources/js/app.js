@@ -7,6 +7,10 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import moment from 'moment';
+import 'moment/locale/it';
+
+moment.locale('it');
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 

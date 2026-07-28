@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 import { Link } from '@inertiajs/vue3';
 import { initFlowbite } from 'flowbite'
 import moment from 'moment';
-import 'moment/locale/it';
 import { useToast } from "vue-toastification"
 
 onMounted(() => {
