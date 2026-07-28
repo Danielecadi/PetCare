@@ -276,7 +276,7 @@ onMounted(async () => {
 					</div>
 					<div class="col-span-12 sm:col-span-6">
 						<label for="breed" class="mb-2 block text-sm font-medium text-gray-500">Razza</label>
-						<VueMultiselect v-model="selectedBreed" :options="matchingBreeds" :multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare"
+						<VueMultiselect v-model="selectedBreed" :options="matchingBreeds" :multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" deselect-label="Premi Invio per rimuovere" selected-label="Selezionato"
 							placeholder="Digita per cercare" label="name" track-by="id">
 							<template #noResult1>
 								Nessuna razza trovata. Prova con una ricerca diversa.

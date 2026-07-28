@@ -168,7 +168,7 @@ const fetchHistories = async () => {
 			<div class="col-span-12 m-5 pb-5">
 				<button type="submit" :disabled="isSubmitting"
 					class="w-full rounded-lg border border-indigo-700 bg-indigo-700 px-8 py-4 text-center text-lg font-medium text-white shadow-sm transition-all hover:border-indigo-800 hover:bg-indigo-800 disabled:cursor-not-allowed disabled:border-indigo-300 disabled:bg-indigo-300">
-					Save
+					Salva Storia Clinica
 				</button>
 			</div>
 		</form>

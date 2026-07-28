@@ -90,11 +90,11 @@ const deletePet = (id) => {
         if (result.isConfirmed) {
             axios.delete(`/pets/${id}`)
                 .then(response => {
-                    Swal.fire('Deleted!', response.data.message, 'success');
+                    Swal.fire('Eliminato!', response.data.message, 'success');
                     fetchPets();
                 })
                 .catch(error => {
-                    Swal.fire('Error!', error.response.data.message, 'error');
+                    Swal.fire('Errore!', error.response.data.message, 'error');
                 });
         }
     });
@@ -113,7 +113,7 @@ const handleBulkDelete = () => {
             if (result.isConfirmed) {
                 axios.delete('/pets/bulk-delete/selected', { data: { selectedIds: selectedPetIds.value } })
                     .then((response) => {
-                        Swal.fire('Deleted!', response.data.message, 'success')
+                        Swal.fire('Eliminati!', response.data.message, 'success')
                         selectedPetIds.value = []
                         anyCheckboxSelected.value = false
                         fetchPets()
@@ -122,7 +122,7 @@ const handleBulkDelete = () => {
                         });
                     })
                     .catch((error) => {
-                        Swal.fire('Error!', error.response.data.message, 'error')
+                        Swal.fire('Errore!', error.response.data.message, 'error')
                         console.error('Error:', error);
                     });
             }

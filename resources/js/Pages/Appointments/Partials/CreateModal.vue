@@ -117,7 +117,7 @@ onMounted(async () => {
                   <div class="col-span-2">
                     <label for="client"
                       class="block mb-2 text-xs font-medium text-gray-500 dark:text-white">Cliente</label>
-                    <VueMultiselect v-model="selectedCreateClient" :options="props.matchingClients" :multiple="false" select-label="Premi Invio per selezionare"
+                    <VueMultiselect v-model="selectedCreateClient" :options="props.matchingClients" :multiple="false" select-label="Premi Invio per selezionare" deselect-label="Premi Invio per rimuovere" selected-label="Selezionato"
 					  :clear-on-select="true" placeholder="Cerca un cliente" label="name" track-by="id"
                       @search-change="props.searchClients" @input="setClientId" :class="{ 'error': errors.client_id }">
                       <template #noUser>

@@ -13,10 +13,24 @@ class SpeciesSeeder extends Seeder
      */
     public function run(): void
     {
-        $species = ['Cat', 'Dog', 'Bird', 'Rabbit', 'Fish', 'Reptile', 'Horse', 'Cow', 'Sheep', 'Goat', 'Pig', 'Chicken', 'Duck', 'Turkey', 'Guinea Pig', 'Hamster', 'Ferret', 'Chinchilla', 'Parrot', 'Turtle'];
+        $speciesMap = [
+            'Cat' => 'Gatto',
+            'Dog' => 'Cane',
+        ];
 
-        foreach ($species as $specie) {
-            Species::firstOrCreate(['name' => $specie]);
+        foreach ($speciesMap as $legacyName => $newName) {
+            $species = Species::where('name', $legacyName)->first();
+
+            if ($species) {
+                $species->name = $newName;
+                $species->save();
+            } else {
+                Species::firstOrCreate(['name' => $newName]);
+            }
+        }
+
+        foreach (['Gatto', 'Cane'] as $allowedName) {
+            Species::firstOrCreate(['name' => $allowedName]);
         }
     }
 }

@@ -222,7 +222,7 @@ const fetchBreeds = async (speciesId) => {
 					<div class="col-span-6">
 						<label for="client_id" class="mb-2 block text-sm font-medium text-gray-700">Cliente</label>
 						<VueMultiselect v-model="selectedUser" :class="{ 'error': errors.client_id }" :options="matchingUsers"
-							:multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" placeholder="Digita per cercare" label="name" track-by="id"
+							:multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" deselect-label="Premi Invio per rimuovere" selected-label="Selezionato" placeholder="Digita per cercare" label="name" track-by="id"
 							@search-change="fetchUsers" @input="setUserId">
 							<template #noUser>
 								Nessun utente trovato. Prova con una ricerca diversa.
@@ -236,7 +236,7 @@ const fetchBreeds = async (speciesId) => {
 					<div class="col-span-12 sm:col-span-6">
 						<label for="species" class="mb-2 block text-sm font-medium text-gray-700">Specie</label>
 						<VueMultiselect v-model="selectedSpecies" :class="{ 'error': errors.species_id }" :options="matchingSpecies"
-							:multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" placeholder="Digita per cercare" label="name" track-by="id"
+							:multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" deselect-label="Premi Invio per rimuovere" selected-label="Selezionato" placeholder="Digita per cercare" label="name" track-by="id"
 							@search-change="fetchSpecies" @input="setSpeciesId">
 							<template #noSpecies>
 								Nessuna specie trovata. Prova con una ricerca diversa.
@@ -248,7 +248,7 @@ const fetchBreeds = async (speciesId) => {
 					</div>
 					<div class="col-span-12 sm:col-span-6">
 						<label for="breed" class="mb-2 block text-sm font-medium text-gray-700">Razza</label>
-						<VueMultiselect v-model="selectedBreed" :options="matchingBreeds" :multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare"
+						<VueMultiselect v-model="selectedBreed" :options="matchingBreeds" :multiple="false" :clear-on-select="true" select-label="Premi Invio per selezionare" deselect-label="Premi Invio per rimuovere" selected-label="Selezionato"
 							placeholder="Digita per cercare" label="name" track-by="id">
 							<template #noResult1>
 								Nessuna razza trovata. Prova con una ricerca diversa.
